@@ -7,6 +7,27 @@
 </head>
 <body>
     <div class="book-list"></div>
+    <button id="new-book-btn">NEW BOOK</button>
+    <div id="new-book-form-container">
+        <form id="new-book-form">
+            <label for="title-input">Title:</label>
+            <input type="text" id="title-input" />
+            <br />
+            <label for="author-input">Author:</label>
+            <input type="text" id="author-input" />
+            <br />
+            <label for="pages-input">Pages:</label>
+            <input type="number" id="pages-input" />
+            <br />
+            <label for="read-input">Read:</label>
+            <select id="read-input">
+                <option value="Have read">Have read</option>
+                <option value="Not read yet">Not read yet</option>
+            </select>
+            <br />
+            <button id="add-book-btn">Add Book</button>
+        </form>
+    </div>
     <script>
         const myLibrary = [];
 
@@ -33,7 +54,9 @@
   document.getElementById('title-input').value = '';
   document.getElementById('author-input').value = '';
   document.getElementById('pages-input').value = '';
-  document.getElementById('read-input').value = '';
+  document.getElementById('read-input').value = 'Have read';
+  
+  displayBooks();
 }
 
 function displayBooks() {
@@ -54,6 +77,15 @@ function displayBooks() {
     bookList.appendChild(bookCard);
   });
 }
+
+document.getElementById('new-book-btn').addEventListener('click', () => {
+            document.getElementById('new-book-form-container').style.display = 'block';
+        });
+
+        document.getElementById('add-book-btn').addEventListener('click', (e) => {
+            e.preventDefault();
+            addBookToLibrary();
+        });
     </script>
 </body>
 </html>
