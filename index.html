@@ -43,13 +43,17 @@
   };
 }
         function addBookToLibrary() {
+            console.log('Adding new book to library...')
             const title = document.getElementById('title-input').value;
   const author = document.getElementById('author-input').value;
   const page = Number(document.getElementById('pages-input').value);
   const read = document.getElementById('read-input').value;
 
+  console.log('Form data', title, author, page, read);
+
   const newBook = new Book(title, author, page, read);
   myLibrary.push(newBook);
+  console.log('Library contents:', myLibrary);
 
   document.getElementById('title-input').value = '';
   document.getElementById('author-input').value = '';
@@ -79,7 +83,12 @@ function displayBooks() {
 }
 
 document.getElementById('new-book-btn').addEventListener('click', () => {
-            document.getElementById('new-book-form-container').style.display = 'block';
+    console.log('New book button clicked!');
+    const formContainer = document.getElementById('new-book-form-container');
+    console.log('Form container:', formContainer);
+    formContainer.style.display = 'block';
+    console.log('Form container display:', formContainer.style.display);
+    console.log('Form content:', formContainer.innerHTML);
         });
 
         document.getElementById('add-book-btn').addEventListener('click', (e) => {
