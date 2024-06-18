@@ -6,7 +6,7 @@
     <title>library</title>
 </head>
 <body>
-    <div class="book-list"></div>
+    <div id="book-list"></div>
     <button id="new-book-btn">NEW BOOK</button>
     <div id="new-book-form-container">
         <form id="new-book-form">
@@ -34,21 +34,21 @@
         function Book(title, author, page, read) {
             this.title = title;
   this.author = author;
-  this.pages = pages;
+  this.page = page;
   this.read = read;
 
   this.info = function() {
     let readStatus = this.read === "Have read" ? "Have read" : "Not read yet";
-    return `${this.title} by ${this.author}, ${this.pages} pages, ${readStatus}`;
+    return `${this.title} by ${this.author}, ${this.page} pages, ${readStatus}`;
   };
 }
         function addBookToLibrary() {
             const title = document.getElementById('title-input').value;
   const author = document.getElementById('author-input').value;
-  const pages = document.getElementById('pages-input').value;
+  const page = Number(document.getElementById('pages-input').value);
   const read = document.getElementById('read-input').value;
 
-  const newBook = new Book(title, author, pages, read);
+  const newBook = new Book(title, author, page, read);
   myLibrary.push(newBook);
 
   document.getElementById('title-input').value = '';
