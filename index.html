@@ -6,6 +6,7 @@
     <title>library</title>
 </head>
 <body>
+    <div class="book-list"></div>
     <script>
         const myLibrary = [];
 
@@ -33,6 +34,25 @@
   document.getElementById('author-input').value = '';
   document.getElementById('pages-input').value = '';
   document.getElementById('read-input').value = '';
+}
+
+function displayBooks() {
+  const bookList = document.getElementById('book-list');
+  while (bookList.firstChild) {
+    bookList.removeChild(bookList.firstChild);
+  }
+
+  myLibrary.forEach((book) => {
+    const bookCard = document.createElement('div');
+    bookCard.className = 'book-card';
+
+    const bookInfo = document.createElement('p');
+    const bookText = document.createTextNode(book.info());
+    bookInfo.appendChild(bookText);
+
+    bookCard.appendChild(bookInfo);
+    bookList.appendChild(bookCard);
+  });
 }
     </script>
 </body>
